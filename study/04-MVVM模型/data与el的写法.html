@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data与el的写法</title>
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>hello {{name}}</h2>
+    </div>
+    <script>
+        //el的第一种写法(常用) 
+        const app = new Vue({
+            el:'#app',
+            data:{
+                name:'ysw',
+                school:'wzbc'
+            }
+        })
+
+        //el的第二种写法(不常用)
+        // const App = new Vue({
+        //     data:{
+        //         name:'ysw',
+        //         school:'wzbc'
+        //     }
+        // })
+        // App.$mount('#app');
+
+        //data的第一种写法,data是一个对象
+        // new Vue({
+        //     el:'#app',
+        //     data:{
+        //         name:'ysw',
+        //         school:'wzbc'
+        //     }
+        // })
+
+        data的第二种写法,data是一个函数,且要返回数据对象(组件中必须用函数式data)
+        new Vue({
+            el:'#app',
+            data(){    
+                /*
+                特别注意:
+                    若使用函数式data，Vue会帮我们调用data函数，Vue就会得到返回的数据对象，从而使用，this是Vue的实例对象
+                    data不要写成箭头函数,要写成普通函数,否则this的指向就是Window了,而不是Vue的实例对象
+               */ 
+                console.log(this);
+                return{
+                    name:'ysw',
+                    school:'wzbc'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

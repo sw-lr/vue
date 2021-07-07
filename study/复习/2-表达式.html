@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表达式</title>
+</head>
+<body>
+    <div></div>
+    <!-- 该表达式不推荐写 -->
+    <script type="text/javascript">
+        //关于逗号赋值的问题
+        // var a=1;
+        // var b=2;
+        // var c=a,b;//存在对b变量再次定义，c的值取自a
+        // console.log(c);
+        // c=(a,b);//c的值取自b
+        // console.log(c);
+        // console.log(a);
+        // console.log(b);
+
+        //关于逻辑"与"
+        const a='qwe';
+        const b='asd';
+        if(a && b){
+            console.log('@');
+        }
+        const c=a && b;
+        console.log(c);
+    </script>
+</body>
+</html>

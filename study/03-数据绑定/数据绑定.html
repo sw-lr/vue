@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        单向数据绑定(v-bind):<input type="text" v-bind:value="name">
+        双向数据绑定(v-model):<input type="text" v-model:value="name">
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                name:'ysw'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{name}}</h2>
+        <!-- 绑定事件--- 标准方式绑定 -->
+        <!-- ()可以省略 -->
+        <button v-on:click="show1">打印:信息1(v-on绑定)</button>
+        <!-- 绑定事件--- 简写方式 -->
+        <button @click="show1">打印:信息1(@绑定)</button>
+        <!-- 绑定事件--- 传递参数 -->
+        <button @click="show2($event,666)">点我提示:信息2+传递参数</button>
+        <!-- 绑定事件--- 组织默认事件,.prevent事件修饰符 -->
+        <a href="https://www.baidu.com" @click.prevent="show3">点我提示:信息3(组织默认行为)</a>
+        <!-- 绑定事件--- 阻止冒泡,.stop事件修饰符,事件修饰符可以连写,顺序可以改变 -->
+        <div @click="show5">
+            <a href="https://www.baidu.com" @click.stop.prevent="show4">点我提示:信息4(阻止冒泡)</a>
+        </div>
+        <!-- 绑定事件--- 键盘事件,主要:enter,esc -->
+        <input @keyup.enter="show6" type="text" placeholder="按下回车提示数据">
+        <!-- 键盘编码也可以 -->
+        <!-- <input @keyup.13="show6" type="text" placeholder="按下回车提示数据"> -->
+        <!-- <input @keyup.39="show6" type="text" placeholder="按下右键提示数据"> -->
+        <!-- <input @keyup.16="show6" type="text" placeholder="按下shift提示数据"> -->
+        <!-- <input @keyup.arrow-right="show6" type="text" placeholder="按下右箭头提示数据"> -->
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{//配置数据
+                name:'ysw'
+            },
+            methods:{//用于配置方法
+                show1(event){//此处的show1不能写成箭头函数,否则this就是window
+                    // console.log('信息1',event.target.innerText)
+                    // console.log(this.name)//this是app
+                    alert('信息1');
+                },
+                show2(event,number){
+                    console.log(event)
+                    alert('信息2---'+number)
+                },
+                show3(event){
+                    // event.preventDefault();//需手动组织默认行为
+                    alert('信息3');
+                },
+                show4(event){
+                    // event.stopPropagation();//手动阻止冒泡
+                    alert('信息4')
+                },
+                show5(){
+                    alert('信息5')
+                },
+                show6(event){
+                    // if(event.keyCode !== 13)return//手动判断按键
+                    alert(event.target.value)
+                    // console.log(event.keyCode)//按键编码值
+                    // console.log(event.key)//按键名
+                }
+            }
+        })
+    </script>
+</body>
+</html>
